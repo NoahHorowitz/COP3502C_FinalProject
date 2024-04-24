@@ -33,10 +33,11 @@ class Board:
             pygame.draw.line(self.screen, (0, 0, 0), (margin + i * cell_size, margin),
                              (margin + i * cell_size, margin + self.height * cell_size), line_width)
 
+    #selects option on board
     def select(self, row, col):
         self.selected_cell = (row, col)
 
-
+#allows user to choose an option on the board
     def click(self, x, y):
         cell_size = 9
         margin = 10
@@ -48,7 +49,7 @@ class Board:
         else:
             return None
 
-
+#clears out option from the board
     def clear(self):
         if self.selected_cell:
             row, col = self.selected_cell
@@ -59,27 +60,27 @@ class Board:
         if self.selected_cell:
             row, col = self.selected_cell
             self.cells[row][col].sketch = value
-
+#places number on the board
     def place_number(self, value):
         if self.selected_cell:
             row, col = self.selected_cell
             self.cells[row][col].value = value
-
+#clears out option and sets back to no selection on the board
     def reset_to_original(self):
         for i in range(self.width):
             for j in range(self.height):
                 self.cells[i][j].value = 0
-
+#checks if the cell is already occupied by numbers
     def is_full(self):
         for i in range(self.width):
             for j in range(self.height):
                 if self.cells[i][j].value == 0:
                     return False
         return True
-
+#updates the board to store more information
      def update_board(self):
         pass
-
+#checks if the space is empty
     def find_empty(self):
         for i in range(self.width):
             for j in range(self.height):
